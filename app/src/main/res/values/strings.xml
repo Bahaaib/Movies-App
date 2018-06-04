@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">MoviesApp</string>
+    <string name="api_key">9038b534536865ab325f8cd8c000a973</string>
+    <string name="movie_title">Title:</string>
+    <string name="release_date">Release Date:</string>
+    <string name="vote_avg">Vote Average:</string>
+    <string name="movie_plot">Plot Synopsis:</string>
+
+    <string name="popular">Popular</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="favorite">Favorite</string>
+    <string name="trailer">Watch Trailer!</string>
+    <string name="reviews">Reviews</string>
+
+
+</resources>

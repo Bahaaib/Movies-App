@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_top">8dp</dimen>
+    <dimen name="margin_right">8dp</dimen>
+    <dimen name="font_main">24sp</dimen>
+    <dimen name="font_regular">16sp</dimen>
+    <dimen name="poster_margin_top">200dp</dimen>
+    <dimen name="views_margin_left">8dp</dimen>
+    <dimen name="title_margin_top">30dp</dimen>
+    <dimen name="title_width">55dp</dimen>
+    <dimen name="titlecont_margin_top">55dp</dimen>
+    <dimen name="title_padding_right">200dp</dimen>
+    <dimen name="release_margin_top">95dp</dimen>
+    <dimen name="releasecont_margin_top">125dp</dimen>
+    <dimen name="release_width">140dp</dimen>
+    <dimen name="avg_margin_top">150dp</dimen>
+    <dimen name="avgval_margin_top">180dp</dimen>
+    <dimen name="plot_margin_top">330dp</dimen>
+    <dimen name="plotcont_margin_top">360dp</dimen>
+    <dimen name="padding_right">10dp</dimen>
+    <dimen name="padding_bottom">8dp</dimen>
+
+
+
+</resources>
