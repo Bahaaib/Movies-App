@@ -2,6 +2,7 @@ package com.example.bahaa.moviesapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 import com.like.LikeButton;
 import com.like.OnLikeListener;
 import com.squareup.picasso.Picasso;
@@ -28,6 +32,8 @@ public class MovieAdapter extends RecyclerView.Adapter {
     // The cards container List & The Parent Activity context
     private Context context;
     private ArrayList<MovieModel> adapterModel;
+    private InterstitialAd interstitialAd;
+    private String testAd = "ca-app-pub-3940256099942544/1033173712";
 
     {
         adapterModel = new ArrayList<>();
@@ -36,6 +42,9 @@ public class MovieAdapter extends RecyclerView.Adapter {
     public MovieAdapter(Context context, ArrayList<MovieModel> adapterModel) {
         this.context = context;
         this.adapterModel = adapterModel;
+        interstitialAd = new InterstitialAd(context);
+        interstitialAd.setAdUnitId("ca-app-pub-6702076183097498/7507069401");
+        interstitialAd.loadAd(new AdRequest.Builder().build());
     }
 
     //Here We tell the RecyclerView what to show at each element of it..it'd be a cardView!
@@ -62,18 +71,20 @@ public class MovieAdapter extends RecyclerView.Adapter {
     // actions to show & interact with them
     public class MovieViewHolder extends RecyclerView.ViewHolder {
 
-        public ImageView moviePoster;
-        public String BASE_URL = "https://image.tmdb.org/t/p/";
-        public String IMAGE_SIZE = "w500/";
-        public LikeButton favoriteButton;
-        public boolean isFavorite;
-        public ArrayList<Integer> favoriteMoviesIdList = new ArrayList<>();
+        private ImageView moviePoster;
+        private CardView movieCard;
+        private String BASE_URL = "https://image.tmdb.org/t/p/";
+        private String IMAGE_SIZE = "w500/";
+        private LikeButton favoriteButton;
+        private boolean isFavorite;
+        private ArrayList<Integer> favoriteMoviesIdList = new ArrayList<>();
 
 
         public MovieViewHolder(View itemView) {
             super(itemView);
 
-            moviePoster = (ImageView) itemView.findViewById(R.id.movie_poster);
+            moviePoster = itemView.findViewById(R.id.movie_poster);
+            movieCard = itemView.findViewById(R.id.movie_card_view);
             favoriteButton = (LikeButton) itemView.findViewById(R.id.fav_heart);
 
 
@@ -148,6 +159,17 @@ public class MovieAdapter extends RecyclerView.Adapter {
                             favoriteMovies.remove(adapterModel.get(position));
                         }
                     }).start();
+                }
+            });
+
+            movieCard.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (interstitialAd.isLoaded()) {
+                        interstitialAd.show();
+                    } else {
+                        Log.i("Statuss", "Failed to load");
+                    }
                 }
             });
 
