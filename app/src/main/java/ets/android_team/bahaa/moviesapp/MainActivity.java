@@ -1,4 +1,4 @@
-package com.example.bahaa.moviesapp;
+package ets.android_team.bahaa.moviesapp;
 
 import android.arch.persistence.room.Room;
 import android.content.Context;
@@ -69,9 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
 
-
-
-        recyclerView = (RecyclerView) findViewById(R.id.gameRecyclerView);
+        recyclerView = findViewById(R.id.gameRecyclerView);
 
         adapter = new MovieAdapter(this, movieList);
         recyclerView.setAdapter(adapter);
@@ -208,11 +206,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean isOnline() {
         manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        if (manager.getActiveNetworkInfo() != null) {
-            return true;
-        } else {
-            return false;
-        }
+        return manager.getActiveNetworkInfo() != null;
 
     }
 

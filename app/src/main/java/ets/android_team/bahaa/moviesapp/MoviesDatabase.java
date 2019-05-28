@@ -1,4 +1,4 @@
-package com.example.bahaa.moviesapp;
+package ets.android_team.bahaa.moviesapp;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;

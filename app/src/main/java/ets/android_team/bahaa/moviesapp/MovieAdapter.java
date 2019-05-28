@@ -1,4 +1,4 @@
-package com.example.bahaa.moviesapp;
+package ets.android_team.bahaa.moviesapp;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.like.LikeButton;
@@ -19,8 +18,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import static com.example.bahaa.moviesapp.MainActivity.favoriteMovies;
-import static com.example.bahaa.moviesapp.MainActivity.moviesDatabase;
 
 /**
  * Created by Bahaa on 3/23/2018.
@@ -85,7 +82,7 @@ public class MovieAdapter extends RecyclerView.Adapter {
 
             moviePoster = itemView.findViewById(R.id.movie_poster);
             movieCard = itemView.findViewById(R.id.movie_card_view);
-            favoriteButton = (LikeButton) itemView.findViewById(R.id.fav_heart);
+            favoriteButton = itemView.findViewById(R.id.fav_heart);
 
 
         }
@@ -116,8 +113,8 @@ public class MovieAdapter extends RecyclerView.Adapter {
                 }
             });
 
-            for (int i = 0; i < favoriteMovies.size(); i++) {
-                favoriteMoviesIdList.add(favoriteMovies.get(i).getMovieId());
+            for (int i = 0; i < MainActivity.favoriteMovies.size(); i++) {
+                favoriteMoviesIdList.add(MainActivity.favoriteMovies.get(i).getMovieId());
                 Log.i("Status", "Loaded lists..");
             }
 
@@ -142,9 +139,9 @@ public class MovieAdapter extends RecyclerView.Adapter {
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
-                            moviesDatabase.DaoAccess().insertMovieToDB(adapterModel.get(position));
+                            MainActivity.moviesDatabase.DaoAccess().insertMovieToDB(adapterModel.get(position));
                             if (!isFavorite) {
-                                favoriteMovies.add(adapterModel.get(position));
+                                MainActivity.favoriteMovies.add(adapterModel.get(position));
                             }
                         }
                     }).start();
@@ -155,8 +152,8 @@ public class MovieAdapter extends RecyclerView.Adapter {
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
-                            moviesDatabase.DaoAccess().deleteMovieFromDB(adapterModel.get(position));
-                            favoriteMovies.remove(adapterModel.get(position));
+                            MainActivity.moviesDatabase.DaoAccess().deleteMovieFromDB(adapterModel.get(position));
+                            MainActivity.favoriteMovies.remove(adapterModel.get(position));
                         }
                     }).start();
                 }

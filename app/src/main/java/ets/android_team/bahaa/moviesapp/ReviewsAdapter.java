@@ -1,4 +1,4 @@
-package com.example.bahaa.moviesapp;
+package ets.android_team.bahaa.moviesapp;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -58,8 +58,8 @@ public class ReviewsAdapter extends RecyclerView.Adapter {
 
         public ReviewViewHolder(View itemView) {
             super(itemView);
-            author = (TextView) itemView.findViewById(R.id.author);
-            reviewContent = (TextView) itemView.findViewById(R.id.review_content);
+            author = itemView.findViewById(R.id.author);
+            reviewContent = itemView.findViewById(R.id.review_content);
 
         }
 

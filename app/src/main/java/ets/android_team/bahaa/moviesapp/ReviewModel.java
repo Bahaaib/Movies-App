@@ -1,4 +1,4 @@
-package com.example.bahaa.moviesapp;
+package ets.android_team.bahaa.moviesapp;
 
 import com.google.gson.annotations.SerializedName;
 

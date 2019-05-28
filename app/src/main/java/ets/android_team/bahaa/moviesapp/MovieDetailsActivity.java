@@ -1,4 +1,4 @@
-package com.example.bahaa.moviesapp;
+package ets.android_team.bahaa.moviesapp;
 
 import android.content.Context;
 import android.content.Intent;
@@ -32,8 +32,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import static com.example.bahaa.moviesapp.MainActivity.API_URL;
-
 public class MovieDetailsActivity extends AppCompatActivity {
 
     private ImageView moviePoster;
@@ -57,13 +55,13 @@ public class MovieDetailsActivity extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(getBaseContext());
 
 
-        moviePoster = (ImageView) findViewById(R.id.movie_poster_details);
+        moviePoster = findViewById(R.id.movie_poster_details);
 
-        movieTitle = (TextView) findViewById(R.id.movie_title_details);
-        releaseDate = (TextView) findViewById(R.id.release_date_details);
-        voteAvg = (TextView) findViewById(R.id.vote_avg_details);
-        moviePlot = (TextView) findViewById(R.id.movie_plot_details);
-        movieTrailer = (TextView) findViewById(R.id.movie_trailer);
+        movieTitle = findViewById(R.id.movie_title_details);
+        releaseDate = findViewById(R.id.release_date_details);
+        voteAvg = findViewById(R.id.vote_avg_details);
+        moviePlot = findViewById(R.id.movie_plot_details);
+        movieTrailer = findViewById(R.id.movie_trailer);
 
 
         final Intent intent = getIntent();
@@ -107,7 +105,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
             }
         });
 
-        reviewRV = (RecyclerView) findViewById(R.id.reviews_rv);
+        reviewRV = findViewById(R.id.reviews_rv);
 
         reviewsAdapter = new ReviewsAdapter(this, reviewList);
         linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -120,7 +118,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
     public void LoadTrailer() {
 
         final JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET,
-                API_URL + movieID + "/videos?" + "api_key=" + getString(R.string.api_key),
+                MainActivity.API_URL + movieID + "/videos?" + "api_key=" + getString(R.string.api_key),
                 null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -172,7 +170,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
     public void LoadReviews() {
         reviewList.clear();
         final JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET,
-                API_URL + movieID + "/reviews?" + "api_key=" + getString(R.string.api_key),
+                MainActivity.API_URL + movieID + "/reviews?" + "api_key=" + getString(R.string.api_key),
                 null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -232,11 +230,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
     public boolean isOnline() {
         manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        if (manager.getActiveNetworkInfo() != null) {
-            return true;
-        } else {
-            return false;
-        }
+        return manager.getActiveNetworkInfo() != null;
 
     }
 

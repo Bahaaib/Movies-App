@@ -1,4 +1,4 @@
-package com.example.bahaa.moviesapp;
+package ets.android_team.bahaa.moviesapp;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
